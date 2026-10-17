@@ -1,0 +1,20 @@
+@if (loading) {
+  <p class="loading">Cargando detalle...</p>
+}
+
+@if (error) {
+  <p class="error">{{ error }}</p>
+}
+
+@if (movie) {
+  <div class="detail-container">
+    <img [src]="getImageUrl(movie.poster_path)" [alt]="movie.title" class="detail-poster">
+    <div class="detail-info">
+      <h2>{{ movie.title }}</h2>
+      <p class="release-date">Fecha de estreno: {{ movie.release_date }}</p>
+      <p class="rating">⭐ {{ movie.vote_average?.toFixed(1) ?? '0.0' }} / 10 ({{ movie.vote_count }} votos)</p>
+      <p class="overview">{{ movie.overview }}</p>
+      <a routerLink="/peliculas" class="btn-back">← Volver a la lista</a>
+    </div>
+  </div>
+}
