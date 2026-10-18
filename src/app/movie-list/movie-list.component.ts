@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core'; // <-- Nuevo import
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core'; 
 import { RouterLink } from '@angular/router';
 import { DecimalPipe } from '@angular/common';
 import { MovieService, Movie } from '../services/movie.service';
@@ -12,7 +12,7 @@ import { MovieService, Movie } from '../services/movie.service';
 })
 export class MovieListComponent implements OnInit {
   private movieService = inject(MovieService);
-  private cdr = inject(ChangeDetectorRef); // <-- Inyectamos el detector
+  private cdr = inject(ChangeDetectorRef); 
   
   movies: Movie[] = [];
   loading = true;
@@ -27,14 +27,14 @@ export class MovieListComponent implements OnInit {
         this.movies = response.results;
         this.loading = false;
         
-        // FORZAMOS a Angular a actualizar la pantalla inmediatamente
+        // FORZA a Angular a actualizar la pantalla inmediatamente
         this.cdr.detectChanges(); 
       },
       error: (err) => {
         console.error('Error de TMDB:', err);
         this.error = 'Error al cargar las películas.';
         this.loading = false;
-        this.cdr.detectChanges(); // También forzamos en caso de error
+        this.cdr.detectChanges(); 
       }
     });
   }
